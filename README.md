@@ -73,7 +73,7 @@ Things you may want to cover:
 |city|string|null: false|
 |street|string|null: false|
 |building|string|
-|phone|integer|null: false|
+|phone|string|null: false|
 |first_name|string|null: false|
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
@@ -137,6 +137,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, index: true|
+|ancestry|integer|index: true|
 
 ### Association
   has_many :items
