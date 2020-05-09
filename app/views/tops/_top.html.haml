@@ -1,0 +1,26 @@
+.top
+  .top-main
+    .top-main__search-bar1
+      .top-main__search-bar1__logo-button
+        = link_to image_tag("/assets/logo.png", class: 'top-main__search-bar1__logo-button__image'),root_path 
+      .top-main__search-bar1__text
+        = form_for '#', class: 'top-main__search-bar1__text__form' do |f|
+          = f.text_field :search, placeholder: '何かお探しですか？'
+          = f.label 'search', class: 'top-main__search-bar1__text__box' do
+            = icon('fas', 'search', class: 'top-main__search-bar1__text__box__image')
+          = f.submit 'search', class: 'top-main__search-bar1__text__box__hidden'
+    .top-main__search-bar2
+      .top-main__search-bar2__genre-search
+        .top-main__search-bar2__genre-search__category-search
+          %a.top-main__search-bar2__genre-search__category-search__category-image{:href => "/jp/category"}
+            %i.fas.fa-bars
+            %font{:size => "2"} カテゴリーから探す
+        .top-main__search-bar2__genre-search__brands-search
+          %a.top-main__search-bar2__genre-search__brands-search__brands-image{:href => "/jp/brands"}
+            %i.fas.fa-tag
+            %font{:size => "2"} ブランドから探す
+      .top-main__search-bar2__new
+        .top-main__search-bar2__new__singin
+          = link_to "新規会員登録",'#', class: "top-main__search-bar2__new__signin__btn" 
+        .top-main__search-bar2__new__login
+          = link_to "ログイン", '#', class: "top-main__search-bar2__new__login__btn"  
