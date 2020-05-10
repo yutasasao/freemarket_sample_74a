@@ -1,0 +1,23 @@
+.footer {
+  background-image: url(/assets/bg-appBanner-pict.jpg);
+  padding: 100px 40px;
+  background-size: cover;
+  background-position: center;
+
+  &__box {
+  color: #fff;
+  text-align: center;
+
+  &__text-1 {
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.4;
+  } 
+  
+  &__text-2 {
+    font-size: 35px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+  }
+  }
+}
