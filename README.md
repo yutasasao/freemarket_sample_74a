@@ -31,10 +31,10 @@ Things you may want to cover:
 |image|string|
 
 ### Association
-- has_many :addresses
-  has_many :cards
-  has_many :comments
-- has_many :items
+- has_one :address, dependent: :destroy
+  has_many :cards, dependent: :destroy
+  has_many :comments, dependent: :destroy
+- has_many :items, dependent: :destroy
 
 
 
@@ -55,10 +55,8 @@ Things you may want to cover:
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
-- has_many :group_users
-  has_many :users, through: :group_users
-  has_many :images
-  has_many :comments
+  has_many :images, dependent: :destroy
+  has_many :comments, dependent: :destroy
   belongs_to :brand
   belongs_to :category
 
@@ -127,8 +125,8 @@ Things you may want to cover:
 |name|string|null: false, index: true|
 
 ### Association
-  has_many :items
-  has_many :categories,through: :brands_categories
+  has_many :items, dependent: :destroy
+  has_many :categories,through: :brands_categories, dependent: :destroy
 
 
 
@@ -140,8 +138,8 @@ Things you may want to cover:
 |ancestry|integer|index: true|
 
 ### Association
-  has_many :items
-  has_many :brands,through: :brands_categories
+  has_many :items, dependent: :destroy
+  has_many :brands,through: :brands_categories, dependent: :destroy
 
 
 
