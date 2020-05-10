@@ -62,20 +62,25 @@
         padding-top: 10px;
         &__category-search {
           width: 50%;
-          &__category-image{
+          a {
             color: black;
             text-decoration: none;
-            i{
+            font-size: 13px;
+            
+            i {
+              font-size: 15px;
               color: red;
             }
           }
         }
         &__brands-search {
           width: 50%;
-          &__brands-image {
+          a {
             color: black;
             text-decoration: none;
-            i{
+            font-size: 13px;
+
+            i {
               color:red
             }
           }

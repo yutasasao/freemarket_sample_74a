@@ -12,13 +12,15 @@
     .top-main__search-bar2
       .top-main__search-bar2__genre-search
         .top-main__search-bar2__genre-search__category-search
-          %a.top-main__search-bar2__genre-search__category-search__category-image{:href => "/jp/category"}
-            %i.fas.fa-bars
-            %font{:size => "2"} カテゴリーから探す
+          %a.top-main__search-bar2__genre-search__category-search__category-image
+            = link_to '' do
+              %i.fas.fa-bars
+              カテゴリーから探す
         .top-main__search-bar2__genre-search__brands-search
-          %a.top-main__search-bar2__genre-search__brands-search__brands-image{:href => "/jp/brands"}
-            %i.fas.fa-tag
-            %font{:size => "2"} ブランドから探す
+          %a.top-main__search-bar2__genre-search__brands-search__brands-image
+            = link_to '' do
+              %i.fas.fa-tag
+              ブランドから探す
       .top-main__search-bar2__new
         .top-main__search-bar2__new__singin
           = link_to "新規会員登録",'#', class: "top-main__search-bar2__new__signin__btn" 
