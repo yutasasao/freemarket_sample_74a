@@ -1,0 +1,151 @@
+// Place all the styles related to the user controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: rgb(250, 248, 248);
+}
+
+
+.user-contener{
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 40px;
+  background-color: rgb(250, 248, 248);
+  margin: 40px auto 0;
+
+  .l-side{
+    width: 280px;
+    margin: 0 40px 0 0;
+    .mypage-nav{
+      color: #333;
+      ul{
+        list-style: none;
+        margin: 0px 0px;
+        padding: 0px 0px;
+        background-color: #fff;
+        li{
+          font-size: 14px;
+          padding: 16px;
+          border-bottom: 1px solid #eee;
+          a{text-decoration: none;
+            color: #333;
+          }
+        }
+      }
+      h3{
+        font-size: 16px;
+        margin: 40px 0 0;
+      }
+    }
+  }
+
+
+
+  .l-content{
+    width: 700px;
+    margin-left: auto;
+    color: #333;
+    
+    .mypage-user-icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      padding: 20px;
+      background: linear-gradient(to bottom, #a6d900 0%, #ff4454 100%);
+      opacity: 0.5;
+      animation: huerotator 3s infinite alternate;
+    }
+
+    @keyframes huerotator {
+      0% {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+      }
+    
+      100% {
+        -webkit-filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg);
+      }
+    }
+   
+
+    .mypage-tab-container-notification-todo{
+      background-color: #fff;
+      .mypage-tabs{
+        display: flex;
+        line-height: 72px;
+        list-style: none;
+        font-size: 16px;
+        text-align: center;
+        background-color: #eee;
+        .active{
+          width: 50%;
+          background-color: #fff;
+          // ビュー用の為下記追加
+          border-top: 2px solid #ea352d;
+        }
+        .active2{
+          width: 50%;
+          // background-color: #fff;　#ビュー用の為コメントアウト
+        }
+      }
+      .tab-content{
+        .mypage-tab-notification{
+          list-style: none;
+          padding: 160px 0 60px;
+          text-align: center;
+          color: lightgray;
+          .mypage-item-link{
+            border-bottom: 1px solid #eee;
+            padding: 16px;
+          }
+        }
+      }
+    }
+
+    .mypage-tab-container{
+      margin: 40px 0 0;
+      background-color: #fff;
+      .mypage-tab-head{
+        line-height: 72px;
+        padding: 0 16px;
+        font-size: 16px;
+        text-align: center;
+        background-color: rgb(245, 244, 244);
+      }
+        .mypage-tabs{
+          display: flex;
+          line-height: 72px;
+          list-style: none;
+          background-color: #eee;
+          text-align: center;
+          .active{
+            width: 50%;
+            background-color: #fff;
+            // ビュー用の為下記追加
+            border-top: 2px solid #ea352d;
+          }
+          .active-2{
+            width: 50%;
+            // background-color: #fff; #ビュー用の為コメントアウト
+          }
+        }
+        .tab-content{
+          padding: 160px 0 60px;
+          text-align: center;
+          color: lightgray;
+        }
+     
+    }
+  }
+
+
+}
