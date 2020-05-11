@@ -1,0 +1,48 @@
+//商品の詳細
+.sale-form-details {
+  padding: 40px;
+  background-color: #fff;
+  border-bottom: #e5e5e5 1px solid;
+  width: 59%;
+  margin: auto;
+  .head {
+    color: rgb(136,136,136);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4em;
+    display: inline-block;
+    margin-bottom: 24px;
+  }
+  &__category {
+    &--title {
+      display: flex;
+      align-items: center;
+    }
+    &--select {
+      position: relative;
+      .icon-btn {
+        position: absolute;
+        top: 40%;
+        right: 16px;
+        z-index: 1;
+      }
+    }
+    &--brand {
+      display: flex;
+      align-items: center;
+    }
+    &--status-title {
+      display: flex;
+      align-items: center;
+    }
+    &--status {
+      position: relative;
+      .icon-btn {
+        position: absolute;
+        top: 40%;
+        right: 16px;
+        z-index: 1;
+    }
+  }
+}
+}

@@ -1,0 +1,129 @@
+.sale
+  = render "top"
+  .sale-form
+    = form_with local: true do |f|
+      .sale-form-image
+        .sale-form-image__title
+          %h5 出品画像
+          %span.red 必須
+        .sale-form-image__main
+          %p 最大10枚までアップロードできます
+        .sale-form-image__upload
+          .sale-form-image__upload--input
+            = f.file_field :image, class:'sale-image--input', id: 'sale-image-input',name:'images[]', type:'file', accept: '.jpg,.png', multiple: true#,    style: 'display:none'
+        %label{ for:"sale-image-input", class:'sale-form-image__label'}
+          .sale-form-image__label--contents
+            = icon('fas','camera-retro')
+            %p ドラッグアンドドロップ
+            %p またはクリックしてファイルをアップロード
+        %p.error 画像がありません
+      .sale-form-item
+        .sale-form-item__name
+          .sale-form-item__name--title
+            %h5 商品名
+            %span.red 必須
+          = f.text_field :sale_text, class:'sale-form--input', placeholder: "40文字まで"
+        .sale-form-item__explanation
+          .sale-form-item__explanation--title.sale-title
+            %h5 商品の説明
+            %span.red 必須
+          =f.text_area :sale_texta, class:'sale-form-item__explanation--text', placeholder: "商品の説明 (必須 1000文字以内) (色、素材、重さ、定価、注意点など) 例) 2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+        .sale-form-item__limit
+          %span 0
+          %p /1000
+        %p.error 入力してください
+      .sale-form-details
+        %p.head 商品の詳細
+        .sale-form-details__category
+          .sale-form-details__category--title
+            %h5 カテゴリー
+            %span.red 必須
+          .sale-form-details__category--select.select
+            %i.icon-btn
+              = icon('fas','chevron-down')
+            = f.select :sale_category, [["選択してください", 0]]
+          %p.error 選択してください
+          .sale-form-details__category--brand.title
+            %h5 ブランド
+            %span.gray 任意
+          = f.text_field :sale_brand, class:'sale-form--input', placeholder:"例) シャネル"
+          .sale-form-details__category--status-title.title
+            %h5 商品の状態
+            %span.red 必須
+          .sale-form-details__category--status
+            %i.icon-btn
+              = icon('fas','chevron-down')
+            = f.select :sale_status, [["選択してください", 0]]
+          %p.error 選択してください
+      .sale-form-delivery
+        .sale-form-delivery__head
+          %p.head 配送について
+          = link_to root_path, class:"icon" do
+            %i.icon-q
+              = icon('far', 'question-circle')
+        .sale-form-delivery__fee
+          .sale-form-delivery__fee--title.title
+            %h5 配送料の負担
+            %span.red 必須
+          .sale-form-delivery__fee--menu
+            %i.icon-btn
+              = icon('fas','chevron-down')
+            = f.select :sale_fee, [["選択してください", 0]]
+          %p.error 選択してください
+        .sale-form-delivery__shipping
+          .sale-form-delivery__shipping--title.title
+            %h5 発送元の地域
+            %span.red 必須
+          .sale-form-delivery__shipping--menu
+            %i.icon-btn
+              = icon('fas','chevron-down')
+            = f.select :sale_shipping, [["選択してください", 0]]
+          %p.error 選択してください
+        .sale-form-delivery__day
+          .sale-form-delivery__day--title.title
+            %h5 発送までの日数
+            %span.red 必須
+          .sale-form-delivery__day--menu
+            %i.icon-btn
+              = icon('fas','chevron-down')
+            = f.select :sale_day, [["選択してください", 0]]
+          %p.error 選択してください
+      .sale-form-price
+        .sale-form-price__money
+          %p.head 価格 (¥300~9,999,999)
+          = link_to root_path, class: "icon" do
+            %i.icon-q
+              = icon('far', 'question-circle')
+        .sale-form-price__main
+          .sale-form-price__main--title.title
+            %h5 販売価格
+            %span.red 必須
+          .sale-form-price__main--input
+            %span ¥
+            = f.number_field :sale_price, placeholder: "0"
+        %p.error 300以上9999999以下で入力してください
+        .sale-form-price__fee
+          %p 販売手数料 (10%)
+          %span ー
+        .sale-form-price__profit
+          %p 販売利益
+          %span ー
+      .sale-form-exhibition
+        .sale-form-exhibition__btn
+          = f.submit "出品する", class:'sale-form-exhibition__btn--red btn-red'
+          = f.submit "下書きに保存", class:'sale-form-exhibition__btn--gray btn-gray'
+          = link_to "もどる", root_path, class: "sale-form-exhibition__btn--link"
+        .sale-form-exhibition__note
+          %p 
+            禁止されている
+            = link_to "行為", root_path
+            および
+            = link_to "出品物", root_path
+            を必ずご確認ください。
+            = link_to "偽ブランド品", root_path
+            や
+            = link_to "盗難物", root_path
+            などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして
+            = link_to "加盟店規約", root_path
+            に同意したことになります。
+      = render "footer"
