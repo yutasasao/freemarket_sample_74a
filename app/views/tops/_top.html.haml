@@ -2,7 +2,7 @@
   .top-main
     .top-main__search-bar1
       .top-main__search-bar1__logo-button
-        = link_to image_tag("/assets/logo.png", class: 'top-main__search-bar1__logo-button__image'),root_path 
+        = link_to image_tag("logo.png", class: 'top-main__search-bar1__logo-button__image'),root_path 
       .top-main__search-bar1__text
         = form_for '#', class: 'top-main__search-bar1__text__form' do |f|
           = f.text_field :search, placeholder: '何かお探しですか？'
