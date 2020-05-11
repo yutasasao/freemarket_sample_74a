@@ -1,0 +1,73 @@
+//配送関係
+.sale-form-delivery {
+  padding: 40px;
+  background-color: #fff;
+  border-bottom: #e5e5e5 1px solid;
+  width: 59%;
+  margin: auto;
+  &__head {
+    margin-bottom: 24px;
+    .head {
+      color: rgb(136,136,136);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4em;
+      display: inline-block;
+    }
+    i {
+      height: 16px;
+      margin-left: 4px;
+      width: 16px;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+  &__fee {
+    .title{
+      margin-top: 0;
+    }
+    &--title {
+      display: flex;
+      align-items: center;
+    }
+    &--menu {
+      position: relative;
+      .icon-btn {
+        position: absolute;
+        top: 40%;
+        right: 16px;
+        z-index: 1;
+      }
+    }
+  }
+  &__shipping {
+    &--title {
+      display: flex;
+      align-items: center;
+    }
+    &--menu {
+      position: relative;
+      .icon-btn {
+        position: absolute;
+        top: 40%;
+        right: 16px;
+        z-index: 1;
+      }
+    }
+  }
+  &__day {
+    &--title {
+      display: flex;
+      align-items: center;
+    }
+    &--menu {
+      position: relative;
+      .icon-btn {
+        position: absolute;
+        top: 40%;
+        right: 16px;
+        z-index: 1;
+      }
+    }
+  }
+}
