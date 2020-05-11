@@ -1,0 +1,74 @@
+//価格関係
+.sale-form-price {
+  padding: 40px;
+  background-color: #fff;
+  width: 59%;
+  margin: auto;
+  &__money {
+    margin-bottom: 24px;
+    .head {
+      color: rgb(136,136,136);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4em;
+      display: inline-block;
+    }
+    i {
+      height: 16px;
+      margin-left: 4px;
+      width: 16px;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 14px 0;
+    -webkit-box-align: center;
+    .title {
+      margin-top: 0;
+    }
+    &--title {
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+      span {
+        margin: 0;
+      }
+    }
+    &--input {
+      display: flex;
+      align-items: center;
+      span {
+        margin-right: 8px;
+      }
+      input {
+        height: 48px;
+        width: 285px;
+        text-align: right;
+        margin: 0;
+      }
+    }
+  }
+  &__fee {
+    padding: 35px 0;
+    color: rgb(51, 51, 51);
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: #e5e5e5 1px solid;
+  }
+  &__profit {
+    padding: 29px 0 0;
+    color: rgb(51, 51, 51);
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+  }
+  p.error {
+    display: flex;
+    justify-content: flex-end;
+    margin: 4px 0 0 0;
+  }
+}

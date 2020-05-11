@@ -1,0 +1,54 @@
+//画像投稿フォーム
+.sale-form-image {
+  padding: 40px;
+  background-color: #fff;
+  border-bottom: #e5e5e5 1px solid;
+  width: 59%;
+  margin: auto;
+  &__title {
+    display: flex;
+    align-items: center;
+  }
+  &__main {
+    color: #333333;
+    margin: 16px 0 8px 0;
+    font-size: 14px;
+  }
+  &__upload {
+    &--input {
+      input {
+        display: none;
+      }
+    }
+  }
+  &__label {
+    &--contents {
+      width: 100%;
+      height: 140px;
+      border-style: dashed;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: center;
+      -webkit-box-align: center;
+      flex-direction: column;
+      border-width: 1px;
+      border-color: rgb(204, 204, 204);
+      text-align: center;
+      background-color: rgb(245, 245, 245);
+      cursor: pointer;
+      i {
+        margin-bottom: 8px;
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+      }
+      p {
+        font-size: 12px;
+        line-height: 1.4em;
+        display: block;
+      }
+    }
+  }
+}
