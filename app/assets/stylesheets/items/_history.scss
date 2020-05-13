@@ -1,0 +1,30 @@
+.item-history {
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 15px -3px rgba(0,0,0,0.16);
+  padding: 0 60px;
+  position: relative;
+  width: 100%;
+
+  ul {
+    width: 100%;
+    padding: 15px 0 15px;
+    font-size: 14px;
+    margin: 0 auto;
+    max-width: 1040px;
+    display: flex;
+    justify-content: left;
+  
+    li {
+    padding-right: 10px;
+  }
+
+}
+
+      a {
+    text-decoration: none;
+    color: black;
+  }
+  
+
+
+}
