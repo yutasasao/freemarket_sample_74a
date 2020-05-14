@@ -1,0 +1,39 @@
+//出品ボタン等のレイアウト
+.sale-form-exhibition {
+  padding: 0 40px 40px 40px;
+  background-color: #fff;
+  width: 59%;
+  margin: 0 auto;
+  &__btn {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+    &--red {
+      width: 360px;
+      background-color: #ea352d;
+      cursor: pointer;
+      color: #fff;
+      height: 48px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    &--gray {
+      width: 360px;
+      background-color: #cccccc;
+      cursor: pointer;
+      color: #222222;
+      height: 48px;
+      font-size: 17px;
+      font-weight: 600;
+      margin-top: 24px;
+    }
+    &--link {
+      color: #0095ee;
+      margin-top: 24px;
+    }
+  }
+  &__note {
+    font-size: 12px;
+  }
+}
