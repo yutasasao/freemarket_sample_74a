@@ -1,0 +1,105 @@
+.header-login {
+  height: 100vh;
+  background-color: #f5f5f5;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  .header {
+    height: 128px;
+    width: 100%;
+    &__icon {
+      height: 30%;
+      width: 15%;
+      margin: auto;
+      &__image {
+        margin: 30px auto;
+      }
+    }
+  }
+  .main {
+    background-color: rgb(245, 245, 245);
+    height: 85%;
+    &__container {
+      background-color: white;
+      height: 100%;
+      width: 50%;
+      margin: auto;
+
+      &__header {
+        background-color: white;
+        height: 100px;
+        margin: auto;
+        text-align: center;
+        border-bottom: #f5f5f5 solid 1px;
+        display: flex;
+        flex-direction: column;
+
+        &__text {
+        display: inline-block;
+        font-size: 14px;
+        margin-top: 20px;
+        p {
+          display: inline-block;
+        }
+        }
+        a {
+          margin: 8px auto 0;
+          border: 1px solid #0099e8;
+          background: #0099e8;
+          color: #fff;
+          line-height: 40px;
+          text-decoration: none;
+          height: 48px;
+          width :335px;
+        }
+      }
+    &__form {
+      &__content-top {
+        flex-direction: column;
+        &__mail {
+          text-align: center;
+          padding: 30px 0px;
+          input {
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+        }
+          }
+      &__content-bottom {
+        text-align: center;
+          &__password {
+            padding-bottom: 30px;
+            input {
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
+          }  
+          }
+      &__content-login {
+        &__btn {
+          text-align: center;
+          a {
+          display: inline-block;
+          margin: 8px auto 0;
+          border: 1px solid #ea352d;
+          background: #ea352d;
+          color: #fff;
+          line-height: 40px;
+          text-decoration: none;
+          height: 48px;
+          width :335px;
+        }
+      }
+        }
+      }
+    }
+  }
+}

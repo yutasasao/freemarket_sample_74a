@@ -1,0 +1,26 @@
+.header-login
+  .header
+    .header__icon
+      = link_to image_tag("logo.svg", class: "header__icon__image")
+
+  .main
+    .main__container
+      .main__container__header
+        .main__container__header__text
+          アカウントをお持ちでない方はこちら
+        = link_to "#" do
+          新規登録
+      = form_for "#", url: "#", method: :get, html: {class: 'main__container__form'} do |f|
+        .main__container__form__content-top
+          .main__container__form__content-top__mail
+            = f.email_field :email, type: "text", placeholder:"メールアドレス"
+        .main__container__form__content-bottom
+          .main__container__form__content-bottom__password
+            = f.password_field :password, type: "text", placeholder:"パスワード"
+        .main__container__form__content-login
+          .main__container__form__content-login__btn
+            = link_to "#" do
+              ログイン
+   
+           
+           
