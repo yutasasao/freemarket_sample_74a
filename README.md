@@ -139,6 +139,8 @@ Things you may want to cover:
 
 ### Association
   has_many :items, dependent: :destroy
+  has_ancestry  
+  <!-- ancestryで多階層カテゴリを実装。また一対多でアソシエーションできる。 -->
   has_many :brands,through: :brands_categories, dependent: :destroy
 
 
