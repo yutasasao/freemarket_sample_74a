@@ -4,7 +4,7 @@ class Address < ApplicationRecord
   belongs_to :user, optional: true
   
 
-  validates :postal_code, :prefectuer, :city, :street, :first_name, :last_name, :first_name_kana, :last_name_kana, presence: true
+  validates :postal_code, :prefecture_id, :city, :street, :first_name, :last_name, :first_name_kana, :last_name_kana, presence: true
   validates :first_name_kana, :last_name_kana, format: {
     with: /\A[\p{hiragana}　ー－&&[^ -~｡-ﾟ]]+\z/,
     message: "全角ひらがなのみで入力して下さい"

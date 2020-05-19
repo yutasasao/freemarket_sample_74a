@@ -23,7 +23,7 @@
               ブランドから探す
       .top-main__search-bar2__new
         -if user_signed_in?
-          .top-main__search-bar2__new__logout
+          .top-main__search-bar2__new__mypage
             = link_to "マイページ", user_path(current_user.id), class: "top-main__search-bar2__new__mypage__btn"
           .top-main__search-bar2__new__logout
             = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "top-main__search-bar2__new__logout__btn"

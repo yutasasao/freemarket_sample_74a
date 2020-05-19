@@ -1,7 +1,7 @@
 .body-address
   .header
     .header__icon
-      = link_to image_tag("logo.svg", class: "header__icon__image")
+      = link_to image_tag("logo.png", width:"185", height:"49", class: "header__icon__image")
     .header__status
       .header__status__line
         .header__status__line__menber
@@ -33,7 +33,7 @@
               都道府県
             .main__container__form__content-top__prefectuer__require
               必須
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: "main__container__form__content-top__prefectuer__text"
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: false}, class: "main__container__form__content-top__prefectuer__text"
             
           .main__container__form__content-top__city
             .main__container__form__content-top__city__label
@@ -75,11 +75,11 @@
           .main__container__form__content-top__name-kana
             .main__container__form__content-top__name-kanji__header
               .main__container__form__content-top__name-kana__header__label
-                送付先お名前カナ(全角)
+                送付先お名前かな(全角)
               .main__container__form__content-top__name-kana__header__require
                 必須
-            = f.text_field :last_name_kana, type: "text", placeholder:"例)ヤマダ", class: "main__container__form__content-top__name-kana__family-name"
-            = f.text_field :first_name_kana, type: "text", placeholder:"例)タロウ", class: "main__container__form__content-top__name-kana__first-name"
+            = f.text_field :last_name_kana, type: "text", placeholder:"例)やまだ", class: "main__container__form__content-top__name-kana__family-name"
+            = f.text_field :first_name_kana, type: "text", placeholder:"例)たろう", class: "main__container__form__content-top__name-kana__first-name"
 
           .main__container__form__content-top__phone
             .main__container__form__content-top__phone__label
@@ -106,6 +106,6 @@
           %li
             = link_to "特定商取引に関する表記","#"
       .footer__center__logo
-        =link_to image_tag("mercari-logo-gray.svg", width:"80", height:"65",class:"footer__center__logo--red"),"/"
+        =link_to image_tag("logo.png", width:"185", height:"49", class:"footer__center__logo--red"),"/"
       %p.inc
         furima

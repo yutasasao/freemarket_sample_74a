@@ -92,7 +92,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def address_params
-    params.require(:address).permit(:postal_code, :prefectuer, :city, :street, :building, :phone, :first_name, :last_name, :first_name_kana, :last_name_kana)
+    params.require(:address).permit(:postal_code, :prefecture_id, :city, :street, :building, :phone, :first_name, :last_name, :first_name_kana, :last_name_kana)
   end
 
   def birthday_join

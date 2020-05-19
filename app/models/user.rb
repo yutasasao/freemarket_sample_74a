@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  # validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :nickname, :encrypted_password, :first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, presence: true
   validates :encrypted_password, length: { minimum: 7 }
   # validates :encrypted_password, format: {

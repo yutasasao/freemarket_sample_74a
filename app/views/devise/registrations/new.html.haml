@@ -1,7 +1,7 @@
 .body-register
   .header
     .header__icon
-      = link_to image_tag("logo.svg", class: "header__icon__image")
+      = link_to image_tag("logo.png",width:"185", height:"49", class: "header__icon__image")
     .header__status
       .header__status__line
         .header__status__line__menber
@@ -74,11 +74,11 @@
           .main__container__form__content-top__name-kana
             .main__container__form__content-top__name-kanji__header
               .main__container__form__content-top__name-kana__header__label
-                お名前カナ(全角)
+                お名前かな(全角)
               .main__container__form__content-top__name-kana__header__require
                 必須
-            = f.text_field :last_name_kana, type: "text", placeholder:"例)ヤマダ", class: "main__container__form__content-top__name-kana__family-name"
-            = f.text_field :first_name_kana, type: "text", placeholder:"例)タロウ", class: "main__container__form__content-top__name-kana__first-name"
+            = f.text_field :last_name_kana, type: "text", placeholder:"例)やまだ", class: "main__container__form__content-top__name-kana__family-name"
+            = f.text_field :first_name_kana, type: "text", placeholder:"例)たろう", class: "main__container__form__content-top__name-kana__first-name"
 
           .main__container__form__content-top__birthday
             .main__container__form__content-top__birthday__label
@@ -86,9 +86,9 @@
             .main__container__form__content-top__birthday__require
               必須
             .main__container__form__content-top__birthday__select-wrap
-              = f.date_select :birthday, use_month_numbers: true, class: "main__container__form__content-top__name-kana__first-name", start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), date_separator:'/'
-              .main__container__form__content-top__birthday__text
-                ※本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合がございます。
+              = f.date_select :birthday, use_month_numbers: true, with_css_class: "main__container__form__content-top__name-kana__first-name", start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), date_separator:'/'
+            .main__container__form__content-top__birthday__text
+              ※本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合がございます。
 
           .main__container__form__content-top__info
             .main__container__form__content-top__info__btn
@@ -105,6 +105,6 @@
           %li
             = link_to "特定商取引に関する表記","#"
       .footer__center__logo
-        =link_to image_tag("logo.svg", width:"80", height:"65",class:"footer__center__logo--red")
+        =link_to image_tag("logo.png", width:"185", height:"65",class:"footer__center__logo--red")
       %p.inc
         furima
