@@ -71,7 +71,7 @@ Things you may want to cover:
 |city|string|null: false|
 |street|string|null: false|
 |building|string|
-|phone|string|null: false|
+|phone|string|
 |first_name|string|null: false|
 |last_name|string|null: false|
 |first_name_kana|string|null: false|

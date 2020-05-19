@@ -22,7 +22,13 @@
               %i.fas.fa-tag
               ブランドから探す
       .top-main__search-bar2__new
-        .top-main__search-bar2__new__singin
-          = link_to "新規会員登録",sign_up_index_path, class: "top-main__search-bar2__new__signin__btn" 
-        .top-main__search-bar2__new__login
-          = link_to "ログイン", '#', class: "top-main__search-bar2__new__login__btn"  
+        -if user_signed_in?
+          .top-main__search-bar2__new__mypage
+            = link_to "マイページ", user_path(current_user.id), class: "top-main__search-bar2__new__mypage__btn"
+          .top-main__search-bar2__new__logout
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "top-main__search-bar2__new__logout__btn"
+        -else
+          .top-main__search-bar2__new__singin
+            = link_to "新規会員登録", sign_up_index_path, class: "top-main__search-bar2__new__signin__btn"
+          .top-main__search-bar2__new__login
+            = link_to "ログイン", new_user_session_path, class: "top-main__search-bar2__new__login__btn"
