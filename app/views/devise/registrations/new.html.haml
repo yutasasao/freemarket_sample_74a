@@ -1,0 +1,110 @@
+.body-register
+  .header
+    .header__icon
+      = link_to image_tag("logo.svg", class: "header__icon__image")
+    .header__status
+      .header__status__line
+        .header__status__line__menber
+          会員情報
+          .header__status__line__menber__box
+        .header__status__line__number
+          住所情報
+          .header__status__line__number__box
+        .header__status__line__done
+          完了
+          .header__status__line__done__box
+
+  .main
+    .main__container
+      .main__container__header
+        会員情報入力
+      = form_for @user, as: resource_name, url: user_registration_path, html: {class: 'main__container__form'} do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .main__container__form__content-top
+          .main__container__form__content-top__nickname
+            .main__container__form__content-top__nickname__label
+              ニックネーム
+            .main__container__form__content-top__nickname__require
+              必須
+            = f.text_field :nickname, type: "text", placeholder:"例)太郎", class: "main__container__form__content-top__nickname__text"
+
+          .main__container__form__content-top__mail
+            .main__container__form__content-top__mail__label
+              メールアドレス
+            .main__container__form__content-top__mail__require
+              必須
+            = f.email_field :email, type: "text", placeholder:"PC・携帯どちらでも可", class: "main__container__form__content-top__mail__text"
+
+          .main__container__form__content-top__password
+            .main__container__form__content-top__password__label
+              パスワード
+            .main__container__form__content-top__password__require
+              必須
+            = f.password_field :password, type: "text", placeholder:"7文字以上の半角英数字", minimumlength: "7", class: "main__container__form__content-top__password__text"
+            .main__container__form__content-top__password__info
+              ※英字と数字の両方を含めて設定してください
+
+          .main__container__form__content-top__password-confirmation
+            .main__container__form__content-top__password-confirmation__label
+              パスワード確認
+            .main__container__form__content-top__password-confirmation__require
+              必須
+            = f.password_field :password_confirmation, type: "text", placeholder:"7文字以上の半角英数字", class: "main__container__form__content-top__password__text"
+            .main__container__form__content-top__password__info
+              ※上記で入力したパスワードを入力してください
+            .main__container__form__content-top__password-confirmation__check
+              %input#chkbox{type: "checkbox", class: "main__container__form__content-top__password__check__box"}
+              %label{for: "chkbox", class: "main__container__form__content-top__password__check__label"} パスワードを表示する
+
+          .main__container__form__content-top__identity
+            .main__container__form__content-top__identity__head
+              本人確認
+            .main__container__form__content-top__identity__main
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+          .main__container__form__content-top__name-kanji
+            .main__container__form__content-top__name-kanji__header
+              .main__container__form__content-top__name-kanji__header__label
+                お名前(全角)
+              .main__container__form__content-top__name-kanji__header__require
+                必須
+            = f.text_field :last_name, type: "text", placeholder:"例)山田", class: "main__container__form__content-top__name-kanji__family-name"
+            = f.text_field :first_name, type: "text", placeholder:"例)太郎", class: "main__container__form__content-top__name-kanji__first-name"
+
+          .main__container__form__content-top__name-kana
+            .main__container__form__content-top__name-kanji__header
+              .main__container__form__content-top__name-kana__header__label
+                お名前カナ(全角)
+              .main__container__form__content-top__name-kana__header__require
+                必須
+            = f.text_field :last_name_kana, type: "text", placeholder:"例)ヤマダ", class: "main__container__form__content-top__name-kana__family-name"
+            = f.text_field :first_name_kana, type: "text", placeholder:"例)タロウ", class: "main__container__form__content-top__name-kana__first-name"
+
+          .main__container__form__content-top__birthday
+            .main__container__form__content-top__birthday__label
+              生年月日
+            .main__container__form__content-top__birthday__require
+              必須
+            .main__container__form__content-top__birthday__select-wrap
+              = f.date_select :birthday, use_month_numbers: true, class: "main__container__form__content-top__name-kana__first-name", start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), date_separator:'/'
+              .main__container__form__content-top__birthday__text
+                ※本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合がございます。
+
+          .main__container__form__content-top__info
+            .main__container__form__content-top__info__btn
+              = f.submit "次へ進む" ,class: "main__container__form__content-top__info__btn__red" 
+
+  .footer
+    .footer__center
+      %nav
+        %ul.menu
+          %li
+            = link_to "プライバシーポリシー","#"
+          %li
+            = link_to "フリマ利用規約","#"
+          %li
+            = link_to "特定商取引に関する表記","#"
+      .footer__center__logo
+        =link_to image_tag("logo.svg", width:"80", height:"65",class:"footer__center__logo--red")
+      %p.inc
+        furima

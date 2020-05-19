@@ -1,0 +1,111 @@
+.body-address
+  .header
+    .header__icon
+      = link_to image_tag("logo.svg", class: "header__icon__image")
+    .header__status
+      .header__status__line
+        .header__status__line__menber
+          会員情報
+          .header__status__line__menber__box
+        .header__status__line__number
+          住所登録
+          .header__status__line__number__box
+        .header__status__line__done
+          完了
+          .header__status__line__done__box
+
+  .main
+    .main__container
+      .main__container__header
+        住所情報入力
+      = form_for @address, html: {class: 'main__container__form'} do |f|
+        = render "devise/shared/error_messages", resource: @address
+        .main__container__form__content-top
+          .main__container__form__content-top__postal-code
+            .main__container__form__content-top__postal-code__label
+              郵便番号
+            .main__container__form__content-top__postal-code__require
+              必須
+            = f.text_field :postal_code, placeholder:"0000000", class: "main__container__form__content-top__postal-code__text"
+
+          .main__container__form__content-top__prefectuer
+            .main__container__form__content-top__prefectuer__label
+              都道府県
+            .main__container__form__content-top__prefectuer__require
+              必須
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: "main__container__form__content-top__prefectuer__text"
+            
+          .main__container__form__content-top__city
+            .main__container__form__content-top__city__label
+              市町村
+            .main__container__form__content-top__city__require
+              必須
+            = f.text_field :city, type: "text", placeholder:"例)", minimumlength: "7", class: "main__container__form__content-top__city__text"
+            .main__container__form__content-top__password__info
+
+          .main__container__form__content-top__street
+            .main__container__form__content-top__street__label
+              番地
+            .main__container__form__content-top__street__require
+              必須
+            = f.text_field :street, type: "text", placeholder:"例)", class: "main__container__form__content-top__street__text"
+
+          .main__container__form__content-top__building
+            .main__container__form__content-top__building__label
+              ビル、マンション名
+            .main__container__form__content-top__building__require
+              任意
+            = f.text_field :building, type: "text", placeholder:"例)", class: "main__container__form__content-top__building__text"
+
+          .main__container__form__content-top__identity
+            .main__container__form__content-top__identity__head
+              本人確認
+            .main__container__form__content-top__identity__main
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+          .main__container__form__content-top__name-kanji
+            .main__container__form__content-top__name-kanji__header
+              .main__container__form__content-top__name-kanji__header__label
+                送付先のお名前(全角)
+              .main__container__form__content-top__name-kanji__header__require
+                必須
+            = f.text_field :last_name, type: "text", placeholder:"例)山田", class: "main__container__form__content-top__name-kanji__family-name"
+            = f.text_field :first_name, type: "text", placeholder:"例)太郎", class: "main__container__form__content-top__name-kanji__first-name"
+
+          .main__container__form__content-top__name-kana
+            .main__container__form__content-top__name-kanji__header
+              .main__container__form__content-top__name-kana__header__label
+                送付先お名前カナ(全角)
+              .main__container__form__content-top__name-kana__header__require
+                必須
+            = f.text_field :last_name_kana, type: "text", placeholder:"例)ヤマダ", class: "main__container__form__content-top__name-kana__family-name"
+            = f.text_field :first_name_kana, type: "text", placeholder:"例)タロウ", class: "main__container__form__content-top__name-kana__first-name"
+
+          .main__container__form__content-top__phone
+            .main__container__form__content-top__phone__label
+              電話番号
+            .main__container__form__content-top__phone__require
+              任意
+            .main__container__form__content-top__phone__select-wrap
+              = f.text_field :phone, placeholder:"", class: "main__container__form__content-top__phone__select-wrap--text"
+              .main__container__form__content-top__phone__text
+                ※本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合がございます。
+
+          .main__container__form__content-top__info
+            .main__container__form__content-top__info__btn
+              = f.submit "次へ進む" ,class: "main__container__form__content-top__info__btn__red" 
+
+  .footer
+    .footer__center
+      %nav
+        %ul.menu
+          %li
+            = link_to "プライバシーポリシー","#"
+          %li
+            = link_to "フリマ利用規約","#"
+          %li
+            = link_to "特定商取引に関する表記","#"
+      .footer__center__logo
+        =link_to image_tag("mercari-logo-gray.svg", width:"80", height:"65",class:"footer__center__logo--red"),"/"
+      %p.inc
+        furima
