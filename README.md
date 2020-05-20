@@ -44,12 +44,12 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false, index:true|
 |price|integer|null: false, index:true|
-|size|integer|null: false|
-|condition|integer|null: false|
+|size_id|integer|null: false|
+|condition_id|integer|null: false|
 |shipping_date|integer|null: false|
 |shipping_price|integer|null: false|
-|shipping_area|integer|null: false|
-|shipping_method|integer|null: false|
+|shipping_area_id|integer|null: false|
+|shipping_method_id|integer|null: false|
 |category_id|references|null: false, foreign_key: true|
 |brand_id|references|foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
@@ -134,9 +134,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, index: true|
-|ancestry|integer|index: true|
-|item_id|integer|null: false, foreign_key: true|
+|name|string|
+|ancestry|integer|
 
 ### Association
   has_many :items, dependent: :destroy
@@ -156,6 +155,25 @@ Things you may want to cover:
 ### Association
   belongs_to :brand
   belongs_to :category
+
+## transactsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|evaluate|integer|null: false|
+|confirm|boolean|default: false|
+<!-- ↑boolean型は真偽を保存する時に使う。default: falseはセット -->
+|comment|text|
+|seller_id|integer|
+|buyer_id|integer|
+
+
+### Association
+  has_many :items, dependent: :destroy
+  has_ancestry  
+  <!-- ancestryで多階層カテゴリを実装。また一対多でアソシエーションできる。 -->
+  has_many :brands,through: :brands_categories, dependent: :destroy
+
   
 * Database initialization
 
