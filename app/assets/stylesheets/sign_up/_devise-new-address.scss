@@ -1,4 +1,4 @@
-.body-register {
+.body-address {
   font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
   background-color: rgb(245, 245, 245);
   height: 1500px;
@@ -23,6 +23,28 @@
         font-size: 12px;
         &__menber {
           font-weight: 600;
+          color: #ccc;
+          display: inline-block;
+          margin-right: 30px;
+          position: relative;
+          &__box {
+            background: #ea352d;
+            height: 12px;
+            width: 12px;
+            margin: 8px auto 0;
+            border-radius: 50%;
+          }
+          &::after {
+            position: absolute;
+            bottom: 5px;
+            content: '';
+            width: 200%;
+            height: 2px;
+            background: #ea352d;
+          }
+        }
+        &__number {
+          font-weight: 600;
           color: #ea352d;
           display: inline-block;
           margin-right: 30px;
@@ -37,28 +59,7 @@
           &::after {
             position: absolute;
             bottom: 5px;
-            left: 30px;
-            content: '';
-            width: 200%;
-            height: 2px;
-            background: #ccc;
-          }
-        }
-        &__number {
-          color: #929191;
-          display: inline-block;
-          margin-right: 30px;
-          position: relative;
-          &__box {
-            background: #ccc;
-            height: 12px;
-            width: 12px;
-            margin: 8px auto 0;
-            border-radius: 50%;
-          }
-          &::after {
-            position: absolute;
-            bottom: 5px;
+            left: 42px;
             content: '';
             width: 160%;
             height: 2px;
@@ -122,6 +123,9 @@
       }
     }
   }
+  .field_with_errors {
+    display: contents;
+  }
   .main {
     background-color: rgb(245, 245, 245);
     height: 85%;
@@ -149,7 +153,7 @@
           max-width: 343px;
           margin: 0 auto;
           padding-top: 30px;
-          &__nickname {
+          &__postal-code {
             height: 100px;
             width: 100%;
             &__label {
@@ -178,7 +182,7 @@
               font-size: 16px;
             }
           }
-          &__mail {
+          &__prefectuer {
             height: 100px;
             width: 100%;
             margin: auto;
@@ -208,8 +212,8 @@
               font-size: 16px;
             }
           }
-          &__password {
-            height: 180px;
+          &__city {
+            height: 100px;
             width: 100%;
             margin: auto;
             &__label {
@@ -240,31 +244,85 @@
             &__info {
               color: #888;
               font-size: 15px;
-              margin-top: 10px;
+              margin: 10px 0;
             }
-            &__check {
-              margin-top: 16px;
-              &__box {
-                position: relative;
-                z-index: 2;
-                padding: 0 0 0 28px;
-                font-size: 14px;
-                font-weight: 400;
-                vertical-align: middle;
-                cursor: pointer;
-                width: 24px;
-                height: 24px;
-                -moz-transform: scale(1.4);
-                -webkit-transform: scale(1.4);
-                transform: scale(1.4);
+          }
+          &__street {
+            height: 100px;
+            width: 100%;
+            margin: auto;
+            &__label {
+              font-weight: 550;
+              display: inline-block;
+              .gray {
+                font-size: 12px;
+                color: #888;
               }
-              &__label {
-                z-index: 2;
-                font-size: 14px;
-                font-weight: 400;
-                vertical-align: middle;
-                cursor: pointer;
+            }
+            &__require {
+              background: #ea352d;
+              display: inline-block;
+              margin: 0 0 0 8px;
+              padding: 2px 4px;
+              border-radius: 2px;
+              color: #fff;
+              font-size: 12px;
+              vertical-align: top;
+            }
+            &__text {
+              height: 50px;
+              width: 100%;
+              margin: 8px 0 0;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
+            &__info {
+              color: #888;
+              font-size: 15px;
+              margin: 10px 0;
+            }
+          }
+          &__building {
+            height: 100px;
+            width: 100%;
+            margin: auto;
+            &__label {
+              font-weight: 550;
+              display: inline-block;
+              .gray {
+                font-size: 12px;
+                color: #888;
               }
+            }
+            &__require {
+              background: #ea352d;
+              display: inline-block;
+              margin: 0 0 0 8px;
+              padding: 2px 4px;
+              border-radius: 2px;
+              color: #fff;
+              font-size: 12px;
+              vertical-align: top;
+            }
+            &__text {
+              height: 50px;
+              width: 100%;
+              margin: 8px 0 0;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
+            &__info {
+              color: #888;
+              font-size: 15px;
+              margin: 10px 0;
             }
           }
           &__identity {
@@ -277,7 +335,8 @@
             }
             &__main {
               margin: 8px 0 0;
-              font-size: 14.5px;
+              font-size: 12px;
+              color: #888;
             }
           }
           &__name-kanji {
@@ -374,7 +433,7 @@
               float: right;
             }
           }
-          &__birthday {
+          &__phone {
             width: 100%;
             margin: auto;
             &__label {
@@ -392,78 +451,90 @@
               vertical-align: top;
             }
             &__select-wrap {
-              position: relative;
-              select {
-                display: inline-block;
-                -webkit-appearance: none;
-                position: relative;
-                height: 48px;
-                width: 76px;
-                margin: 8px 3px 3px;
-                padding: 10px 16px 8px;
-                border-radius: 4px;
-                border: 1px solid #ccc;
-                background: #fff;
-                line-height: 1.5;
-                font-size: 16px;
-                }
-              &__year {
-                display: inline;
-                position: relative;
-                &::after {
-                content: '';
-                width: 6px;
-                height: 6px;
-                border: 0px;
-                border-bottom: solid 2px #b4b3b3;
-                border-right: solid 2px #b4b3b3;
-                -ms-transform: rotate(45deg);
-                -webkit-transform: rotate(45deg);
-                transform: rotate(45deg);
-                position: absolute;
-                top: 50%;
-                right: 38px;
-                margin-top: -6px;
-                }
+              display: flex;
+              flex-direction: column;
+              &--text {
+              height: 50px;
+              width: 100%;
+              margin: 8px 0 0;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
               }
-              &__month {
-                display: inline;
-                position: relative;
-                &::after {
-                content: '';
-                width: 6px;
-                height: 6px;
-                border: 0px;
-                border-bottom: solid 2px #b4b3b3;
-                border-right: solid 2px #b4b3b3;
-                -ms-transform: rotate(45deg);
-                -webkit-transform: rotate(45deg);
-                transform: rotate(45deg);
-                position: absolute;
-                top: 50%;
-                right: 38px;
-                margin-top: -6px;
-                }
-              }
-              &__day {
-                display: inline;
-                position: relative;
-                &::after {
-                content: '';
-                width: 6px;
-                height: 6px;
-                border: 0px;
-                border-bottom: solid 2px #b4b3b3;
-                border-right: solid 2px #b4b3b3;
-                -ms-transform: rotate(45deg);
-                -webkit-transform: rotate(45deg);
-                transform: rotate(45deg);
-                position: absolute;
-                top: 50%;
-                right: 35px;
-                margin-top: -6px;
-                }
-              }
+              // select {
+              //   display: inline-block;
+              //   -webkit-appearance: none;
+              //   position: relative;
+              //   height: 48px;
+              //   width: 76px;
+              //   margin: 8px 3px 3px;
+              //   padding: 10px 16px 8px;
+              //   border-radius: 4px;
+              //   border: 1px solid #ccc;
+              //   background: #fff;
+              //   line-height: 1.5;
+              //   font-size: 16px;
+              //   }
+              // &__year {
+              //   display: inline;
+              //   position: relative;
+              //   &::after {
+              //   content: '';
+              //   width: 6px;
+              //   height: 6px;
+              //   border: 0px;
+              //   border-bottom: solid 2px #b4b3b3;
+              //   border-right: solid 2px #b4b3b3;
+              //   -ms-transform: rotate(45deg);
+              //   -webkit-transform: rotate(45deg);
+              //   transform: rotate(45deg);
+              //   position: absolute;
+              //   top: 50%;
+              //   right: 38px;
+              //   margin-top: -6px;
+              //   }
+              // }
+              // &__month {
+              //   display: inline;
+              //   position: relative;
+              //   &::after {
+              //   content: '';
+              //   width: 6px;
+              //   height: 6px;
+              //   border: 0px;
+              //   border-bottom: solid 2px #b4b3b3;
+              //   border-right: solid 2px #b4b3b3;
+              //   -ms-transform: rotate(45deg);
+              //   -webkit-transform: rotate(45deg);
+              //   transform: rotate(45deg);
+              //   position: absolute;
+              //   top: 50%;
+              //   right: 38px;
+              //   margin-top: -6px;
+              //   }
+              // }
+              // &__day {
+              //   display: inline;
+              //   position: relative;
+              //   &::after {
+              //   content: '';
+              //   width: 6px;
+              //   height: 6px;
+              //   border: 0px;
+              //   border-bottom: solid 2px #b4b3b3;
+              //   border-right: solid 2px #b4b3b3;
+              //   -ms-transform: rotate(45deg);
+              //   -webkit-transform: rotate(45deg);
+              //   transform: rotate(45deg);
+              //   position: absolute;
+              //   top: 50%;
+              //   right: 35px;
+              //   margin-top: -6px;
+              //   }
+              // }
             }
             &__text {
               color: #888;
