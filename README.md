@@ -32,10 +32,12 @@ Things you may want to cover:
 
 ### Association
 - has_one :address, dependent: :destroy
+  has_many :ordercomments, dependent: :destroy
   has_many :cards, dependent: :destroy
   has_many :comments, dependent: :destroy
 - has_many :items, dependent: :destroy
-
+  has_many :users_transacts, dependent: :destroy
+  has_many :transacts, through::users_transacts, dependent: :destroy
 
 
 # itemsテーブル
@@ -57,6 +59,8 @@ Things you may want to cover:
 ### Association
   has_many :images, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  belongs_to :user
   belongs_to :brand
   belongs_to :category
 
@@ -166,15 +170,54 @@ Things you may want to cover:
 |comment|text|
 |seller_id|integer|
 |buyer_id|integer|
+|item_id|references|null: false, foreign_key: true|
 
 
 ### Association
-  has_many :items, dependent: :destroy
-  has_ancestry  
-  <!-- ancestryで多階層カテゴリを実装。また一対多でアソシエーションできる。 -->
-  has_many :brands,through: :brands_categories, dependent: :destroy
+  has_many :users,through::users_transacts, dependent: :destroy
+  belongs_to :user
+  belongs_to :item
 
+## users_transactsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|transact_id|references|null: false, foreign_key: true|
+
+
+### Association
+  belongs_to :user
+  belongs_to :transact
   
+
+## ordersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|state|integer|null: false, default: 0|
+|item_id|references|null: false, foreign_key: true|
+
+
+### Association
+  has_many :ordercomments, dependent: :destroy
+  belongs_to :item
+
+
+## ordercommentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|comment|text|null: false|
+|user_id|references|null: false, foreign_key: true|
+|order_id|references|null: false, foreign_key: true|
+
+
+### Association
+  belongs_to :user
+  belongs_to :order
+
+
 * Database initialization
 
 * How to run the test suite
