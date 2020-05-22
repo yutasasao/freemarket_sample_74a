@@ -23,3 +23,30 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+
+  activerecord:
+    models:
+      user: ユーザー
+      address: 住所
+    attributes:
+      user:
+        nickname: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        last_name: 姓
+        first_name: 名
+        last_name_kana: 姓かな
+        first_name_kana: 名かな
+        birthday: 生年月日
+      address:
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市町村
+        street: 番地
+        building: ビル、マンション名
+        last_name: 姓
+        first_name: 名
+        last_name_kana: 姓かな
+        first_name_kana: 名かな
+        phone: 電話番号
