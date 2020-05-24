@@ -50,8 +50,10 @@ Things you may want to cover:
 |condition_id|integer|null: false|
 |shipping_date|integer|null: false|
 |shipping_price|integer|null: false|
-|shipping_area_id|integer|null: false|
-|shipping_method_id|integer|null: false|
+|shipping_area|integer|null: false|
+|shipping_method|integer|null: false|
+|buyer_id|integer|
+|saler_id|integer|null: false|
 |category_id|references|null: false, foreign_key: true|
 |brand_id|references|foreign_key: true|
 |user_id|references|null: false, foreign_key: true|

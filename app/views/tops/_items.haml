@@ -21,6 +21,28 @@
       .items__category__1__new__detail
         = link_to "#" do
           もっと見る >
+    .main
+      - @items.each do |item|
+        .main__data
+          = link_to item_path(item) do
+            .main__data__box
+              .main__data__box__image
+                = image_tag "#{item.images[0].image}",size:"185x189"
+                .main__data__box__image__price
+                  ¥
+                  = item.price
+                .main__data__box__image__sold 
+                  = item.show_soldout_item(item)
+              .main__data__box__text
+                .main__data__box__text__content
+                  .main__data__box__text__content__hidden
+                    = item.name
+                
+                  
+                
+              
+
+
 .items__category
   .items__category__1
     .items__category__1__new

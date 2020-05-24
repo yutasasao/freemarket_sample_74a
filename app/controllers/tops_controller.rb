@@ -1,7 +1,5 @@
 class TopsController < ApplicationController
   def index
-  end
-  
-  def show
+    @items = Item.all.includes(:images)
   end
 end
