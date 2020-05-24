@@ -1,7 +1,7 @@
 .body-address {
   font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
   background-color: rgb(245, 245, 245);
-  height: 1500px;
+  height: 1600px;
   .header {
     background-color: rgb(245, 245, 245);
     height: 8%;
@@ -129,6 +129,16 @@
   .main {
     background-color: rgb(245, 245, 245);
     height: 85%;
+    .error {
+      color: #ea2525;
+      font-size: 10px;
+      font-weight: 600;
+      display: flex;
+      margin: 8px;
+      li {
+        display: inline-block;
+      }
+    }
     &__container {
       background-color: white;
       height: 100%;
@@ -154,7 +164,7 @@
           margin: 0 auto;
           padding-top: 30px;
           &__postal-code {
-            height: 100px;
+            height: 120px;
             width: 100%;
             &__label {
               font-weight: 550;
@@ -183,7 +193,7 @@
             }
           }
           &__prefectuer {
-            height: 100px;
+            height: 120px;
             width: 100%;
             margin: auto;
             &__label {
@@ -213,7 +223,7 @@
             }
           }
           &__city {
-            height: 100px;
+            height: 120px;
             width: 100%;
             margin: auto;
             &__label {
@@ -248,7 +258,7 @@
             }
           }
           &__street {
-            height: 100px;
+            height: 120px;
             width: 100%;
             margin: auto;
             &__label {
@@ -299,7 +309,7 @@
               }
             }
             &__require {
-              background: #ea352d;
+              background: #888;
               display: inline-block;
               margin: 0 0 0 8px;
               padding: 2px 4px;
@@ -326,7 +336,7 @@
             }
           }
           &__identity {
-            height: 100px;
+            height: 120px;
             width: 100%;
             margin: auto;
             &__head {
@@ -340,7 +350,7 @@
             }
           }
           &__name-kanji {
-            height: 100px;
+            height: 140px;
             width: 100%;
             margin: auto;
             &__header {
@@ -387,7 +397,7 @@
             }
           }
           &__name-kana {
-            height: 100px;
+            height: 140px;
             width: 100%;
             margin: auto;
             &__header {
@@ -441,7 +451,7 @@
               display: inline-block;
             }
             &__require {
-              background: #ea352d;
+              background: #888;
               display: inline-block;
               margin: 0 0 0 8px;
               padding: 2px 4px;

@@ -32,10 +32,12 @@ Things you may want to cover:
 
 ### Association
 - has_one :address, dependent: :destroy
+  has_many :ordercomments, dependent: :destroy
   has_many :cards, dependent: :destroy
   has_many :comments, dependent: :destroy
 - has_many :items, dependent: :destroy
-
+  has_many :users_transacts, dependent: :destroy
+  has_many :transacts, through::users_transacts, dependent: :destroy
 
 
 # itemsテーブル
@@ -44,8 +46,8 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false, index:true|
 |price|integer|null: false, index:true|
-|size|integer|null: false|
-|condition|integer|null: false|
+|size_id|integer|null: false|
+|condition_id|integer|null: false|
 |shipping_date|integer|null: false|
 |shipping_price|integer|null: false|
 |shipping_area|integer|null: false|
@@ -59,6 +61,8 @@ Things you may want to cover:
 ### Association
   has_many :images, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  belongs_to :user
   belongs_to :brand
   belongs_to :category
 
@@ -136,9 +140,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, index: true|
-|ancestry|integer|index: true|
-|item_id|integer|null: false, foreign_key: true|
+|name|string|
+|ancestry|integer|
 
 ### Association
   has_many :items, dependent: :destroy
@@ -158,7 +161,65 @@ Things you may want to cover:
 ### Association
   belongs_to :brand
   belongs_to :category
+
+## transactsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|evaluate|integer|null: false|
+|confirm|boolean|default: false|
+<!-- ↑boolean型は真偽を保存する時に使う。default: falseはセット -->
+|comment|text|
+|seller_id|integer|
+|buyer_id|integer|
+|item_id|references|null: false, foreign_key: true|
+
+
+### Association
+  has_many :users,through::users_transacts, dependent: :destroy
+  belongs_to :user
+  belongs_to :item
+
+## users_transactsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|transact_id|references|null: false, foreign_key: true|
+
+
+### Association
+  belongs_to :user
+  belongs_to :transact
   
+
+## ordersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|state|integer|null: false, default: 0|
+|item_id|references|null: false, foreign_key: true|
+
+
+### Association
+  has_many :ordercomments, dependent: :destroy
+  belongs_to :item
+
+
+## ordercommentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|comment|text|null: false|
+|user_id|references|null: false, foreign_key: true|
+|order_id|references|null: false, foreign_key: true|
+
+
+### Association
+  belongs_to :user
+  belongs_to :order
+
+
 * Database initialization
 
 * How to run the test suite
