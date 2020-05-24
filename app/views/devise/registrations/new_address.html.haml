@@ -19,20 +19,23 @@
       .main__container__header
         住所情報入力
       = form_for @address, html: {class: 'main__container__form'} do |f|
-        = render "devise/shared/error_messages", resource: @address
         .main__container__form__content-top
           .main__container__form__content-top__postal-code
             .main__container__form__content-top__postal-code__label
               郵便番号
             .main__container__form__content-top__postal-code__require
               必須
-            = f.text_field :postal_code, placeholder:"0000000", class: "main__container__form__content-top__postal-code__text"
+            .main__container__form__content-top__postal-code__error.error
+              = render partial: 'error', locals: {user: @address, column: "postal_code"}
+            = f.text_field :postal_code, placeholder:"4690009", class: "main__container__form__content-top__postal-code__text"
 
           .main__container__form__content-top__prefectuer
             .main__container__form__content-top__prefectuer__label
               都道府県
             .main__container__form__content-top__prefectuer__require
               必須
+            .main__container__form__content-top__postal-code__error.error
+              = render partial: 'error', locals: {user: @address, column: "prefecture_id"}
             = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: false}, class: "main__container__form__content-top__prefectuer__text"
             
           .main__container__form__content-top__city
@@ -40,6 +43,8 @@
               市町村
             .main__container__form__content-top__city__require
               必須
+            .main__container__form__content-top__city__error.error
+              = render partial: 'error', locals: {user: @address, column: "city"}
             = f.text_field :city, type: "text", placeholder:"例)", minimumlength: "7", class: "main__container__form__content-top__city__text"
             .main__container__form__content-top__password__info
 
@@ -48,6 +53,8 @@
               番地
             .main__container__form__content-top__street__require
               必須
+            .main__container__form__content-top__street__error.error
+              = render partial: 'error', locals: {user: @address, column: "street"}
             = f.text_field :street, type: "text", placeholder:"例)", class: "main__container__form__content-top__street__text"
 
           .main__container__form__content-top__building
@@ -69,6 +76,9 @@
                 送付先のお名前(全角)
               .main__container__form__content-top__name-kanji__header__require
                 必須
+              .main__container__form__content-top__name-kanji__error.error
+                = render partial: 'error', locals: {user: @address, column: "last_name"}
+                = render partial: 'error', locals: {user: @address, column: "first_name"}
             = f.text_field :last_name, type: "text", placeholder:"例)山田", class: "main__container__form__content-top__name-kanji__family-name"
             = f.text_field :first_name, type: "text", placeholder:"例)太郎", class: "main__container__form__content-top__name-kanji__first-name"
 
@@ -78,6 +88,9 @@
                 送付先お名前かな(全角)
               .main__container__form__content-top__name-kana__header__require
                 必須
+              .main__container__form__content-top__name-kana__error.error
+                = render partial: 'error', locals: {user: @address, column: "last_name_kana"}
+                = render partial: 'error', locals: {user: @address, column: "first_name_kana"}
             = f.text_field :last_name_kana, type: "text", placeholder:"例)やまだ", class: "main__container__form__content-top__name-kana__family-name"
             = f.text_field :first_name_kana, type: "text", placeholder:"例)たろう", class: "main__container__form__content-top__name-kana__first-name"
 
