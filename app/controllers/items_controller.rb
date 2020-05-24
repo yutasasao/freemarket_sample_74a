@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   def index
     @item = Item.all.includes(:images)
     @images = Images.all
-    # binding.pry
+   
   end
 
   def new
@@ -11,6 +11,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-  @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 end
