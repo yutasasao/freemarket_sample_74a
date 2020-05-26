@@ -1,21 +1,4 @@
 class ItemsController < ApplicationController
-  def index
-    @item = Item.all.includes(:images)
-    @images = Images.all
-   
-  end
-
-  def new
-    @item = Item.new 
-    @item.images.build
-  end
-
-  def show
-    @item = Item.find(params[:id])
-  end
-end
-
-class ItemsController < ApplicationController
 
   def index
     @item = Item.all.includes(:images)
@@ -43,7 +26,6 @@ class ItemsController < ApplicationController
         @shipping_area = ShippingArea.all
         @shipping_method = ShippingMethod.all
         @item.images.build
-        @items = Item.all
         render 'sales/new'
       end
     end
