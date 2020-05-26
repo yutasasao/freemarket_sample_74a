@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_140421) do
 
+ActiveRecord::Schema.define(version: 2020_05_24_072839) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 2020_05_24_140421) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -79,20 +92,20 @@ ActiveRecord::Schema.define(version: 2020_05_24_140421) do
 
     t.string "name", null: false
     t.integer "price", null: false
-    t.integer "size_id", null: false
     t.integer "condition_id", null: false
+    t.text "explanation", null: false
     t.integer "shipping_date", null: false
     t.integer "shipping_price", null: false
     t.integer "shipping_area_id", null: false
     t.integer "shipping_method_id", null: false
     t.integer "buyer_id"
     t.integer "saler_id", null: false
-    t.text "explanation", null: false
     t.integer "category_id", null: false
-    t.integer "brand_id"
+    t.integer "brand_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
 
     t.string "name"
     t.integer "price"
@@ -112,6 +125,10 @@ ActiveRecord::Schema.define(version: 2020_05_24_140421) do
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+
+
+    t.index ["name"], name: "index_items_on_name"
+    t.index ["price"], name: "index_items_on_price"
 
   end
 

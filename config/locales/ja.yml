@@ -28,6 +28,8 @@ ja:
     models:
       user: ユーザー
       address: 住所
+      item: 商品
+      image: 画像
     attributes:
       user:
         nickname: 名前
@@ -50,3 +52,16 @@ ja:
         last_name_kana: 姓かな
         first_name_kana: 名かな
         phone: 電話番号
+      item:
+        name: 商品名
+        price: 販売価格
+        explanation: 商品の説明文
+        category_id: カテゴリー
+        condition_id: 商品の状態
+        shipping_date: 発送までの日数
+        shipping_price: 配送料の負担
+        shipping_area_id: 発送元の地域
+        shipping_method_id: 配送の方法
+      image:
+        image: 画像
+

@@ -1,60 +1,69 @@
 .sale
-  = render "top"
-  .sale-form
-    = form_with local: true do |f|
-      .sale-form-image
-        .sale-form-image__title
-          %h5 出品画像
-          %span.red 必須
-        .sale-form-image__main
-          %p 最大10枚までアップロードできます
-        .sale-form-image__upload
-          .sale-form-image__upload--input
-            = f.file_field :image, class:'sale-image--input', id: 'sale-image-input',name:'images[]', type:'file', accept: '.jpg,.png', multiple: true#,    style: 'display:none'
-        %label{ for:"sale-image-input", class:'sale-form-image__label'}
-          .sale-form-image__label--contents
-            = icon('fas','camera-retro')
-            %p ドラッグアンドドロップ
-            %p またはクリックしてファイルをアップロード
-        %p.error 画像がありません
+  = render "sales/top"
+  .sale-main
+    = form_for @item, html: {class: "sell-form zone", id: "item-dropzone"} do |f|
+      = render 'layouts/error_messages', model: f.object
+      .sale-form-container
+        .sale-form-container__wrapper
+          %label.sale-form-container__wrapper--label
+            出品画像
+          %span.sale-form-container__wrapper--require
+            必須
+          .sale-form-container__wrapper--caution
+            最大10枚までアップロードできます
+          = f.fields_for :item, class:"sale-form-zone" do |image| #itemに紐づけたimageを以下で使用する
+            .dropzone-container.clearfix  
+              #preview
+              .dropzone-area
+                = image.label :image, class: "dropzone-box", for: "upload-image" do
+                  .input_area
+                    = image.file_field :image, multiple: true, name: 'images[image][]', id: "upload-image", class: "upload-image"
+                  %p.input-area-text
+                    = icon('fas','camera-retro')
+                  %p ドラッグアンドドロップ
+                  %p またはクリックしてファイルをアップロード
+              #preview2
+              .dropzone-area2
+                = image.label :image, class: "dropzone-box", for: "upload-image" do
+                  %p.input-area-text
+                    = icon('fas','camera-retro')
+                  %p ドラッグアンドドロップ
+                  %p またはクリックしてファイルをアップロード
       .sale-form-item
         .sale-form-item__name
           .sale-form-item__name--title
             %h5 商品名
             %span.red 必須
-          = f.text_field :sale_text, class:'sale-form--input', placeholder: "40文字まで"
+          = f.text_field :name, class:'sale-form--input', placeholder: "40文字まで"
         .sale-form-item__explanation
           .sale-form-item__explanation--title.sale-title
             %h5 商品の説明
             %span.red 必須
-          =f.text_area :sale_texta, class:'sale-form-item__explanation--text', placeholder: "商品の説明 (必須 1000文字以内) (色、素材、重さ、定価、注意点など) 例) 2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          =f.text_area :explanation, class:'sale-form-item__explanation--text', placeholder: "商品の説明 (必須 1000文字以内) (色、素材、重さ、定価、注意点など) 例) 2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
         .sale-form-item__limit
           %span 0
           %p /1000
-        %p.error 入力してください
       .sale-form-details
         %p.head 商品の詳細
         .sale-form-details__category
           .sale-form-details__category--title
             %h5 カテゴリー
             %span.red 必須
-          .sale-form-details__category--select.select
+          .sale-form-details__category--select
             %i.icon-btn
               = icon('fas','chevron-down')
-            = f.select :sale_category, [["選択してください", 0]]
-          %p.error 選択してください
+            = f.collection_select :category_id , @category, :id , :name, {include_blank: "---"}, {id:'select-parent-category'}
           .sale-form-details__category--brand.title
             %h5 ブランド
             %span.gray 任意
-          = f.text_field :sale_brand, class:'sale-form--input', placeholder:"例) シャネル"
+          = f.collection_select :brand_id, @brand, :id , :name, class:'sale-form--input'
           .sale-form-details__category--status-title.title
             %h5 商品の状態
             %span.red 必須
           .sale-form-details__category--status
             %i.icon-btn
               = icon('fas','chevron-down')
-            = f.select :sale_status, [["選択してください", 0]]
-          %p.error 選択してください
+            = f.collection_select :condition_id , @condition, :id , :name, {class:'select-box'}
       .sale-form-delivery
         .sale-form-delivery__head
           %p.head 配送について
@@ -68,8 +77,15 @@
           .sale-form-delivery__fee--menu
             %i.icon-btn
               = icon('fas','chevron-down')
-            = f.select :sale_fee, [["選択してください", 0]]
-          %p.error 選択してください
+            = f.select :shipping_price,[["送料込み(出品者負担)"],["着払い(購入者負担)"]], {prompt: "---"}, {class: "select-box"}
+        .sale-form-delivery__method
+          .sale-form-delivery__method--title.title
+            %h5 配送の方法
+            %span.red 必須
+          .sale-form-delivery__method--menu
+            %i.icon-btn
+              = icon('fas','chevron-down')
+            = f.collection_select :shipping_method_id , @shipping_method, :id , :name, {class:'select-box'}
         .sale-form-delivery__shipping
           .sale-form-delivery__shipping--title.title
             %h5 発送元の地域
@@ -77,8 +93,7 @@
           .sale-form-delivery__shipping--menu
             %i.icon-btn
               = icon('fas','chevron-down')
-            = f.select :sale_shipping, [["選択してください", 0]]
-          %p.error 選択してください
+            = f.collection_select :shipping_area_id , @shipping_area, :id , :name, {class:'select-box'}
         .sale-form-delivery__day
           .sale-form-delivery__day--title.title
             %h5 発送までの日数
@@ -86,8 +101,7 @@
           .sale-form-delivery__day--menu
             %i.icon-btn
               = icon('fas','chevron-down')
-            = f.select :sale_day, [["選択してください", 0]]
-          %p.error 選択してください
+            = f.select :shipping_date,[["1~2日で発送"], ["2~3日で発送"],["4~7日で発送"]], {prompt: "---"},{class:"select-box"}
       .sale-form-price
         .sale-form-price__money
           %p.head 価格 (¥300~9,999,999)
@@ -100,7 +114,7 @@
             %span.red 必須
           .sale-form-price__main--input
             %span ¥
-            = f.number_field :sale_price, placeholder: "0"
+            = f.number_field :price, placeholder: "0"
         %p.error 300以上9999999以下で入力してください
         .sale-form-price__fee
           %p 販売手数料 (10%)
@@ -126,4 +140,4 @@
             などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして
             = link_to "加盟店規約", root_path
             に同意したことになります。
-      = render "footer"
+      = render "sales/footer"
