@@ -1,8 +1,7 @@
 class BookmarksController < ApplicationController
 
   def index
-    @user = current_user
-    @bookmarks = Bookmark.where(user_id: @user.id).all
+    @bookmarks = Bookmark.where(user_id: current_user.id)
   end
 
   def create

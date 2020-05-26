@@ -1,9 +1,9 @@
 .sale-list
-  .sale-list-header
-    .sale-list-header__title
+  .sale-list__header
+    .sale-list__header__title
       出品した商品
-  .sale-list-main
-    .sale-list-main__content
+  .sale-list__main
+    .sale-list__main__content
       - @user_items.each do |item|
         .sale-list-main__content__item
           = image_tag "#{item.images[0].image}",size:"40x40"
