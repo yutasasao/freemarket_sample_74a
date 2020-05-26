@@ -1,0 +1,5 @@
+%h2 お気に入り
+-@bookmarks.each do |bookmark|
+  - items = Item.find(bookmark.item_id)
+  = link_to bookmark.item.name, item_path(bookmark.item_id)
+  = image_tag "#{items.images[0].image}",size:"185x189"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_072839) do
+ActiveRecord::Schema.define(version: 2020_05_24_140421) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 2020_05_24_072839) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_bookmarks_on_item_id"
+    t.index ["user_id", "item_id"], name: "index_bookmarks_on_user_id_and_item_id", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -40,6 +50,16 @@ ActiveRecord::Schema.define(version: 2020_05_24_072839) do
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,8 +75,8 @@ ActiveRecord::Schema.define(version: 2020_05_24_072839) do
     t.integer "price", null: false
     t.integer "condition_id", null: false
     t.text "explanation", null: false
-    t.integer "shipping_date", null: false
-    t.integer "shipping_price", null: false
+    t.integer "shipping_date_id", null: false
+    t.integer "shipping_price_id", null: false
     t.integer "shipping_area_id", null: false
     t.integer "shipping_method_id", null: false
     t.integer "buyer_id"
@@ -92,5 +112,9 @@ ActiveRecord::Schema.define(version: 2020_05_24_072839) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "bookmarks", "items"
+  add_foreign_key "bookmarks", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "images", "items"
 end
