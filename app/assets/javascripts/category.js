@@ -1,9 +1,4 @@
-$(document).on("turbolinks:load", function() {
-  カテゴリーセレクトボックスのオプションを作成
-  function appendOption(variable) {
-    var html = `<option value="${variable.id}">${variable.name}</option>`;
-    return html;
-  }
+
 
   // 子カテゴリーの表示作成
   function appendChidrenBox(insertHTML) {
