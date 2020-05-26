@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index
     @item = Item.all.includes(:images)
     @images = Images.all
@@ -11,26 +12,26 @@ class ItemsController < ApplicationController
   end
 
 
+  
   def create
-    @item = Item.new(item_params)
-    @item.user_id = current_user.id
-    if @item.valid? && params[:images].present?
-      @item.save
-      params[:images][:image].each do |image|
-        @item.images.create(image: image, item_id: @item.id)
+      @item = Item.new(item_params)
+      if @item.valid? && params[:images].present?
+        @item.save
+        params[:images][:image].each do |image|
+          @item.images.create(image: image, item_id: @item.id)
+        end
+        redirect_to root_path
+      else
+        @category = Category.where(ancestry: nil)
+        @condition = Condition.all
+        @brand = Brandtype.all
+        @shipping_area = ShippingArea.all
+        @shipping_method = ShippingMethod.all
+        @item.images.build
+        render 'sales/new'
       end
-      redirect_to root_path
-    else
-      @category = Category.where(ancestry: nil)
-      @condition = Condition.all
-      @brand = Brandtype.all
-      @shipping_area = ShippingArea.all
-      @shipping_method = ShippingMethod.all
-      @item.images.build
-      @items = Item.all
-      render 'sales/new'
-    end
   end
+
 
 
   def show
@@ -50,6 +51,27 @@ class ItemsController < ApplicationController
   def bookmarks
     @bookmark = current_user.bookmark_items.includes(:user).recent
   end
+
+
+  def create
+      @item = Item.new(item_params)
+      if @item.valid? && params[:images].present?
+        @item.save
+        params[:images][:image].each do |image|
+          @item.images.create(image: image, item_id: @item.id)
+        end
+        redirect_to root_path
+      else
+        @category = Category.where(ancestry: nil)
+        @condition = Condition.all
+        @brand = Brandtype.all
+        @shipping_area = ShippingArea.all
+        @shipping_method = ShippingMethod.all
+        @item.images.build
+        render 'sales/new'
+      end
+    end
+
 
   private
 
