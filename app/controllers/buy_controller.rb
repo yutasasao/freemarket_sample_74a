@@ -1,11 +1,16 @@
 class BuyController < ApplicationController
+  before_action :set_user, only: [:index, :done] 
+
 
   def index
-    @item = Item.find(params[:item_id])
   end
 
   def done
-    @item = Item.find(params[:item_id])
   end
 
+
+  private
+  def set_user
+    @item = Item.find(params[:item_id])
+  end
 end
