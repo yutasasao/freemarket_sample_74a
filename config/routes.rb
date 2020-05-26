@@ -1,7 +1,6 @@
 
 Rails.application.routes.draw do
-  get 'bookmarks/create'
-  get 'bookmarks/destroy'
+ 
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   
