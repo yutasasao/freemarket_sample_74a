@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
@@ -9,9 +10,17 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
 
-  root to: 'tops#index' 
-  resource :sales, only: [:new, :create]
+  root to: 'items#index'
+  resource :sales, only: [:index, :show, :new, :edit, :destroy] do
+
+  #Ajaxで動くアクションのルートを作成
+  collection do
+    get 'get_category_children', defaults: { format: 'json' }
+    get 'get_category_grandchildren', defaults: { format: 'json' }
+  end
+end
   resources :users, only: [:index, :show]
-  resources :items, only: [:index, :new, :show]
+  resources :items
   resources :sign_up, only: [:index]
+
 end
