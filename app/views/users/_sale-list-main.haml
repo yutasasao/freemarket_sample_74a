@@ -1,0 +1,13 @@
+.sale-list
+  .sale-list-header
+    .sale-list-header__title
+      出品した商品
+  .sale-list-main
+    .sale-list-main__content
+      - @user_items.each do |item|
+        .sale-list-main__content__item
+          = image_tag "#{item.images[0].image}",size:"40x40"
+          = link_to item.name, item_path(item.id)
+    
+
+

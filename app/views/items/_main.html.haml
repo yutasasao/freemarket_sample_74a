@@ -4,7 +4,7 @@
       .item__content__top
         .item__content__top__detail
           %h2.item__content__top__detail__name
-            魚料理
+            = @item.name
           .item__content__top__detail__body
             %ul
               %li
@@ -17,7 +17,8 @@
                   %li
                     =image_tag('item1.png', alt: '商品の画像', height: '140px', width: '150px', class: 'item__image__fourth')
           .item__content__top__detail__price
-            ¥30-
+            ¥
+            = @item.price
             .item__content__top__detail__price__include
               (税込)
               送料込み
@@ -28,32 +29,76 @@
               %tr
                 %th 出品者
                 %td
-                  = link_to "hoge", root_path
+                  = link_to @user.nickname, root_path
               %tr
                 %th カテゴリー
                 %td
-                  = link_to "紳士服", root_path
+                  = link_to @categories.parent.name, root_path
               %tr
                 %th ブランド
                 %td
-                  = link_to "しまむら", root_path
+                  = link_to @brand.name, root_path
               %tr
                 %th 商品のサイズ
-                %td 
+                %td
+                  = @item.size
               %tr
                 %th 商品の状態
                 %td
+                  = @item.condition
+              %tr
+                %th 配送料の負担
+                %td
+                  = @item.condition
+              %tr
+                %th 発送元の地域
+                %td
+                  = @prefecture.name
+              %tr
+                %th 発送日の目安
+                %td
+                  = @item.condition
           .item__content__top__detail__option
-            %ul
-              %li.option-left
-                = icon('fas','star')
-                お気に入り 0
+            -if user_signed_in?
+              = render @item
+            -else
+              %ul
+                %li.option-left
+                  = icon('far', 'star')
+                  お気に入り
+                  = @item.bookmarks.ids.length
             %ul
               %li.option-right
                 = icon('fas','flag')
                 不適切な商品の通報
+          -unless user_signed_in?
+            -if @item.buyer_id == nil
+              = link_to "購入する", item_buy_index_path(@item)
+            - else
+              soldout
+          -if user_signed_in?
+            -if current_user.id != @item.seller_id && @item.buyer_id == nil
+              = link_to "購入する", item_buy_index_path(@item)
+            - elsif @item.buyer_id != nil
+              soldout
+          -if user_signed_in? && current_user.id == @item.seller_id
+            %ul
+              %li
+                編集する
+              %li
+                削除する
+        .item__content__top__comments
+          -@comments.each do |c|
+            .item__content__top__comments__title
+              .item__content__top__comments__title__name
+                %p= c.user.nickname
+              .item__content__top__comments__title__user-id
+                %p.userid user-id:
+                %p.userid= c.user.id
+            .item__content__top__comments__text
+              %p= c.content
         .item__content__top__comment-box
-          = form_for '#' do |f|
+          = form_for [@item, @comment] do |f|
             = f.text_area :content, class: 'comment-box__form', placeholder: 'コメントを入力'
             %p.item__content__top__comment-box__notice
               相手のことを考え丁寧なコメントを心がけましょう。
