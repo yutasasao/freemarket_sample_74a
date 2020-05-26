@@ -5,8 +5,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :price, null: false, index: true
       t.integer :condition_id, null: false
       t.text :explanation, null: false
-      t.integer :shipping_date, null: false
-      t.integer :shipping_price, null: false
+      t.integer :shipping_date_id, null: false
+      t.integer :shipping_price_id, null: false
       t.integer :shipping_area_id, null: false
       t.integer :shipping_method_id, null: false
       t.integer  :buyer_id
