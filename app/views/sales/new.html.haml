@@ -77,7 +77,7 @@
           .sale-form-delivery__fee--menu
             %i.icon-btn
               = icon('fas','chevron-down')
-            = f.select :shipping_price,[["送料込み(出品者負担)"],["着払い(購入者負担)"]], {prompt: "---"}, {class: "select-box"}
+            = f.collection_select :shipping_price_id,ShippingPrice.all, :id , :name, {prompt: "---"}, {class: "select-box"}
         .sale-form-delivery__method
           .sale-form-delivery__method--title.title
             %h5 配送の方法
@@ -101,7 +101,7 @@
           .sale-form-delivery__day--menu
             %i.icon-btn
               = icon('fas','chevron-down')
-            = f.select :shipping_date,[["1~2日で発送"], ["2~3日で発送"],["4~7日で発送"]], {prompt: "---"},{class:"select-box"}
+            = f.collection_select :shipping_date_id , ShippingDate.all, :id , :name, {prompt: "---"},{class:"select-box"}
       .sale-form-price
         .sale-form-price__money
           %p.head 価格 (¥300~9,999,999)

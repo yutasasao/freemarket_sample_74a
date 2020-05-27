@@ -1,17 +1,22 @@
 class Item < ApplicationRecord
+  has_many :images, dependent: :destroy
+  accepts_nested_attributes_for :images, allow_destroy: true    #build使用のため
+  has_many :comments
+  has_many :bookmarks, dependent: :destroy
+  belongs_to :category, optional: true
+  belongs_to :brand, optional: true
+  belongs_to :user, optional: true
+  # optional: true　初期のpresentバリデーション回避
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping_area
   belongs_to_active_hash :shipping_method
+  belongs_to_active_hash :brandtype
+  belongs_to_active_hash :shipping_date
+  belongs_to_active_hash :shipping_price
  
-  # optional: true　初期のpresentバリデーション回避
-  belongs_to :user, optional: true
-  belongs_to :category, optional: true
-  belongs_to :brand, optional: true
-  
-  has_many :images, dependent: :destroy
-  accepts_nested_attributes_for :images, allow_destroy: true #build使用のため
+
 
   validates :condition_id, :shipping_area_id, :shipping_method_id, numericality: {only_integer: true, greater_than: 0, message: "を選択して下さい"}
   validates :shipping_date, :shipping_price, :category_id, presence: {message: "を選択して下さい"}
@@ -24,6 +29,10 @@ class Item < ApplicationRecord
     if (soldout_item = item.buyer_id).present?
       'SOLD'
       end
+  end
+
+  def bookmark_by?(user)
+    bookmarks.where(user_id: user.id).exists?
   end
 
 end
