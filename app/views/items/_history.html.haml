@@ -1,13 +1,13 @@
 .item-history
   %ul
     %li
-      = link_to @categories.parent.name, root_path
+      = link_to @categories.name, root_path
       = icon('fas','angle-right')
     %li
-      = link_to @categories.children.name, root_path
+      = link_to @categories.name, root_path
       = icon('fas','angle-right')
     %li
-      = link_to @categories.indirects.name, root_path
+      = link_to @categories.name, root_path
       = icon('fas','angle-right')
     %li
       = link_to "◯◯", root_path
