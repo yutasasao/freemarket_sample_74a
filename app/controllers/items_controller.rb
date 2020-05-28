@@ -70,9 +70,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-     if params[:images][:image].nil?
-       redirect_to edit_item_path(params[:id])
-     else @item.update(item_params)
+    if @item.update(item_params)
       exist_ids = @item.images.pluck(:id)
       params[:images][:image].each do |image|
         if image.is_a?(String)
@@ -86,6 +84,7 @@ class ItemsController < ApplicationController
         delete_image.delete
       end
       redirect_to root_path
+    else redirect_to edit_item_path(params[:id])
   end
 end
 
