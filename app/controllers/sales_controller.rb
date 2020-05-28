@@ -31,6 +31,10 @@ class SalesController < ApplicationController
       @category_grandchildren = Category.find(params[:child_id].to_s).children
    end
 
+   def get_image
+    @images = Item.find(params[:item_id]).images
+   end
+   
    def get_shipping_metod
     @shipping_method= if params[:shipping_price] == "送料込み(出品者負担)"
                       ShippingMethod.all

@@ -51,14 +51,32 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @images = @item.images
+    @category = Category.where(ancestry: nil)
+    @brand = Brandtype.all
+    @condition = Condition.all
+    @shipping_area = ShippingArea.all
+    @shipping_method = ShippingMethod.all
+    @item.images.build
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
+
+      @item = Item.find(params[:id])
+      @item.update(item_params)
+      exist_ids = @item.images.pluck(:id)
+      params[:images][:image].each do |image|
+        if image.is_a?(String)
+          exist_ids.delete(image.to_i)
+        else
+          render :edit unless @item.images.create(image: image, item_id: @item.id)
+        end
+      end
+      exist_ids.each do |id|
+        delete_image = Image.find(id)
+        delete_image.delete
+      end
   end
 
-end  
   def bookmarks
     @bookmark = current_user.bookmark_items.includes(:user).recent
   end
