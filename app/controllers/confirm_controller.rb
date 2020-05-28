@@ -1,0 +1,6 @@
+class ConfirmController < ApplicationController
+
+
+
+end
+

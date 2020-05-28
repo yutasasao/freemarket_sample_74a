@@ -48,6 +48,17 @@ class ItemsController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      flash[:notice] = "削除しました"
+      redirect_to root_path
+    else
+      flash[:notice] = "削除できませんでした"
+      render action: :show
+    end
+  end
+  
   def edit
     @item = Item.find(params[:id])
     @images = @item.images
@@ -75,7 +86,6 @@ class ItemsController < ApplicationController
         delete_image = Image.find(id)
         delete_image.delete
       end
-  end
 
   def bookmarks
     @bookmark = current_user.bookmark_items.includes(:user).recent
