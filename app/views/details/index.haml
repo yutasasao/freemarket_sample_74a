@@ -1,0 +1,6 @@
+.content
+  - @details.each do |item|
+    = item.item
+    = item.id
+    -# - if user_signed_in? && current_user.id == item.user_id
+    = link_to '詳細', "/details/#{item.id}"

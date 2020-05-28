@@ -84,3 +84,6 @@ gem 'mini_magick'
 gem 'ancestry'
 gem 'jquery-rails'
 gem 'fog-aws'
+gem 'payjp'
+gem 'dotenv-rails'
+gem "jquery-rails"

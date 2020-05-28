@@ -32,6 +32,12 @@ end
     resources :comments, only: [:create]
     resource :bookmarks, only: %i[create destroy]
       get :bookmarks, on: :collection
+    resources :buyers, only: [:index] do
+      collection do
+        post 'pay', to: 'buyers#pay'
+        get 'done', to: 'buyers#done'
+      end
+    end
     resources :buy do
       collection do
         get 'done', to: 'buy#index'
@@ -40,3 +46,10 @@ end
   end
 end
 
+  resources :cards, only: [:new, :show, :destroy] do
+    collection do
+      post 'pay', to: 'cards#pay'
+    end
+  end
+  
+end
