@@ -1,53 +1,78 @@
-//画像投稿フォーム
-.sale-form-image {
+.sale-main {
   padding: 40px;
   background-color: #fff;
   border-bottom: #e5e5e5 1px solid;
   width: 59%;
   margin: auto;
-  &__title {
-    display: flex;
-    align-items: center;
-  }
-  &__main {
-    color: #333333;
-    margin: 16px 0 8px 0;
-    font-size: 14px;
-  }
-  &__upload {
-    &--input {
-      input {
-        display: none;
+  .sale-form-container {
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #f5f5f5;
+    margin: auto;
+    &__wrapper {
+      overflow: auto;
+      &--label {
+        font-size: 14px;
+        font-weight: bold;
       }
-    }
-  }
-  &__label {
-    &--contents {
-      width: 100%;
-      height: 140px;
-      border-style: dashed;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-content: center;
-      -webkit-box-align: center;
-      flex-direction: column;
-      border-width: 1px;
-      border-color: rgb(204, 204, 204);
-      text-align: center;
-      background-color: rgb(245, 245, 245);
-      cursor: pointer;
-      i {
-        margin-bottom: 8px;
-        width: 24px;
-        height: 24px;
-        font-size: 24px;
-      }
-      p {
+      &--require {
+        margin-left: 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        color: #fff;
         font-size: 12px;
-        line-height: 1.4em;
-        display: block;
+        vertical-align: top;
+        background: #ea352d;
+        font-weight: bold;
+        line-height: normal;
+      }
+      &--caution {
+        font-size: 14px;
+        margin-top: 8px;
+        line-height: 1.5;
+      }
+      .dropzone-container {
+        position: relative;
+        margin: 16px auto 0;
+        overflow: auto;
+        font-weight: 200;
+        text-align: center;
+        cursor: pointer;
+        .input_area {
+          display: none;
+        }
+        .input-area-text{
+          line-height: 16px;
+        }
+        .dropzone-area {
+          height: 140px;
+          width: 100%;
+          min-height: 16px;
+          background: #f5f5f5;
+          cursor: pointer;
+          float: right;
+        }
+        .dropzone-area2 {
+          // dropzone-areaを継承
+          @extend .dropzone-area;
+          display: none;
+        }
+        .img_view {
+          background-color: #f5f5f5;
+          height: 140px;
+          width: 120px;
+          float: left;
+          
+          .btn.delete {
+            text-align: center;
+            color: #0099e8;
+          }
+          img{
+            height: 120px;
+            width: 120px;
+            clear: both;
+          }
+        }
       }
     }
   }

@@ -17,11 +17,17 @@
 /storage/*
 !/storage/.keep
 
+/public/uploads/
+
 /node_modules
 /yarn-error.log
 
+/public/uploads/
 /public/assets
 .byebug_history
 
+.DS_Store
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+

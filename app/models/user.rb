@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, password_length: 7..128
 
   has_one :address, dependent: :destroy
+  has_many :items
+  has_many :comments
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_items, through: :bookmarks, source: :item
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: {
