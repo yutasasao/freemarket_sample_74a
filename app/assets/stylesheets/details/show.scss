@@ -1,0 +1,36 @@
+
+.single-container{
+  margin: 20px auto 10px;
+  &__listing-change{
+    background-color: #fff;
+    width: 660px;
+    height: 270px;
+    border: 1px;
+    margin: 24px auto;
+    padding: 8px 16px;
+    line-height: 48px;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    &__btn-default{
+      background-color: #ea352b;
+      margin: 16px 0;
+      cursor: pointer;
+    }
+    &__text-select{
+      color: #000;
+      line-height: normal;
+    }
+    &__btn-stop{
+      background-color: #aaa;
+      margin: 16px 0;
+      cursor: pointer;
+    }
+    &__btn-delete{
+      background-color: #aaa;
+      .button_to{margin-bottom: 16px;
+        cursor: pointer;
+      }
+    }
+  }
+}

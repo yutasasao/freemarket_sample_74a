@@ -70,4 +70,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :price, :explanation, :condition_id, :shipping_date_id, :shipping_price_id, :shipping_area_id, :shipping_method_id, :category_id, :brand_id, :content, images_attributes: [:id, :image, :_destroy]).merge(user_id: current_user.id, saler_id: current_user.id,)#編集や削除の際に必要になるためid, :_destoryを記載する
   end
 
+
 end

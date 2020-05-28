@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :comments
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_items, through: :bookmarks, source: :item
+  # 追記 ---------
+  has_many :cards
+  # -------------
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: {
