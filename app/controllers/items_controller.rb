@@ -48,6 +48,12 @@ class ItemsController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to root_path
+  end
+
   def bookmarks
     @bookmark = current_user.bookmark_items.includes(:user).recent
   end

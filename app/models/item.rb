@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true    #build使用のため
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   belongs_to :category, optional: true
   belongs_to :brand, optional: true
