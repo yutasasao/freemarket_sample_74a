@@ -75,11 +75,6 @@
               %li.option-right
                 = icon('fas','flag')
                 不適切な商品の通報
-          -unless user_signed_in?
-            -if @item.buyer_id == nil
-              = link_to "購入する", item_buy_index_path(@item)
-            - else
-              soldout
           -if user_signed_in?
             -if current_user.id != @item.saler_id && @item.buyer_id == nil
               = link_to "購入する", item_buy_index_path(@item)
@@ -101,14 +96,15 @@
                 %p.userid= c.user.id
             .item__content__top__comments__text
               %p= c.content
-        .item__content__top__comment-box
-          = form_for [@item, @comment] do |f|
-            = f.text_area :content, class: 'comment-box__form', placeholder: 'コメントを入力'
-            %p.item__content__top__comment-box__notice
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br
-              不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            = f.submit 'コメントする', class: 'submit-btn'
+        -if user_signed_in?
+          .item__content__top__comment-box
+            = form_for [@item, @comment] do |f|
+              = f.text_area :content, class: 'comment-box__form', placeholder: 'コメントを入力'
+              %p.item__content__top__comment-box__notice
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br
+                不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              = f.submit 'コメントする', class: 'submit-btn'
       %ul.item__content__links
         %li
           = link_to root_path do

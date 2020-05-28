@@ -53,26 +53,6 @@ class ItemsController < ApplicationController
   end
 
 
-  def create
-      @item = Item.new(item_params)
-      if @item.valid? && params[:images].present?
-        @item.save
-        params[:images][:image].each do |image|
-          @item.images.create(image: image, item_id: @item.id)
-        end
-        redirect_to root_path
-      else
-        @category = Category.where(ancestry: nil)
-        @condition = Condition.all
-        @brand = Brandtype.all
-        @shipping_area = ShippingArea.all
-        @shipping_method = ShippingMethod.all
-        @item.images.build
-        render 'sales/new'
-      end
-    end
-
-
   private
 
   def item_params
