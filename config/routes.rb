@@ -38,13 +38,12 @@ end
         get 'done', to: 'buyers#done'
       end
     end
-    resources :buy do
-      collection do
-        get 'done', to: 'buy#index'
-      end
-    end
+    # resources :buy do
+    #   collection do
+    #     get 'done', to: 'buy#index'
+    #   end
+    # end
   end
-end
 
   resources :cards, only: [:new, :show, :destroy] do
     collection do

@@ -1,2 +1,3 @@
-= form_with( url: pay_buyers_path) do |f|
+= link_to "トップページへ戻る", root_path, class: 'buy-content__user-info__submit__button'
+= form_with( url: pay_item_buyers_path) do |f|
   = f.submit{type:"submit",class:"buy__centerbox__buyinfo__buybutton__red"}

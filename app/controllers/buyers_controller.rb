@@ -1,6 +1,6 @@
 class BuyersController < ApplicationController
   require 'payjp'#Payjpの読み込み
-  before_action :set_card, #:set_item
+  before_action :set_card, :set_item
 
   def index
     if @card.blank?
@@ -18,11 +18,13 @@ class BuyersController < ApplicationController
   def pay
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
-      :amount => 300, #支払金額を引っ張ってくる
+      :amount => @item.price, #支払金額を引っ張ってくる
       :customer => @card.customer_id,  #顧客ID
       :currency => 'jpy',              #日本円
     )
-    redirect_to done_buyers_path #完了画面に移動
+    @item.buyer_id = current_user.id
+    @item.save
+    redirect_to done_item_buyers_path #完了画面に移動
   end
 
   def done
@@ -35,7 +37,7 @@ class BuyersController < ApplicationController
   end
 
   def set_item
-    #@item = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
   end
 
 end
