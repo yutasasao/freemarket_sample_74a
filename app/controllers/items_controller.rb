@@ -48,6 +48,17 @@ class ItemsController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      flash[:notice] = "削除しました"
+      redirect_to root_path
+    else
+      flash[:notice] = "削除できませんでした"
+      render action: :show
+    end
+  end
+  
   def edit
     @images = @item.images
     @category = Category.where(ancestry: nil)

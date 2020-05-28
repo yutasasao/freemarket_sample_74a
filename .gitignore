@@ -25,7 +25,7 @@
 /public/uploads/
 /public/assets
 .byebug_history
-
+/.env
 .DS_Store
 
 # Ignore master key for decrypting credentials and more.
