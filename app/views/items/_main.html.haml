@@ -85,7 +85,7 @@
               %li
                 編集する
               %li
-                削除する
+                = link_to "削除する", item_path(@item), method: :delete
         .item__content__top__comments
           -@comments.each do |c|
             .item__content__top__comments__title
