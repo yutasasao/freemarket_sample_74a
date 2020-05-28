@@ -50,8 +50,13 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to root_path
+    if @item.destroy
+      flash[:notice] = "削除しました"
+      redirect_to root_path
+    else
+      flash[:notice] = "削除できませんでした"
+      render action: :show
+    end
   end
 
   def bookmarks
