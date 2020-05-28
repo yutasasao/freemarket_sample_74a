@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update]
 
   def index
     @item = Item.all.includes(:images)
@@ -35,7 +36,6 @@ class ItemsController < ApplicationController
 
 
   def show
-    @item = Item.find(params[:id])
     @user = @item.user
     @brand = Brandtype.find(@item.brand_id)
     @prefecture = Prefecture.find(@item.shipping_area_id)
@@ -49,7 +49,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     @images = @item.images
     @category = Category.where(ancestry: nil)
     @brand = Brandtype.all
@@ -60,9 +59,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-
-      @item = Item.find(params[:id])
-      @item.update(item_params)
+     if params[:images][:image].nil?
+       redirect_to edit_item_path(params[:id])
+     else @item.update(item_params)
       exist_ids = @item.images.pluck(:id)
       params[:images][:image].each do |image|
         if image.is_a?(String)
@@ -75,7 +74,9 @@ class ItemsController < ApplicationController
         delete_image = Image.find(id)
         delete_image.delete
       end
+      redirect_to root_path
   end
+end
 
   def bookmarks
     @bookmark = current_user.bookmark_items.includes(:user).recent
@@ -83,6 +84,9 @@ class ItemsController < ApplicationController
 
 
   private
+  def set_user
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :price, :explanation, :condition_id, :shipping_date_id, :shipping_price_id, :shipping_area_id, :shipping_method_id, :category_id, :brand_id, :content, images_attributes: [:id, :image, :_destroy]).merge(user_id: current_user.id, saler_id: current_user.id,)#編集や削除の際に必要になるためid, :_destoryを記載する
