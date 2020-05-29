@@ -12,11 +12,13 @@ Rails.application.routes.draw do
   end
 
   root to: 'tops#index'
+
   resource :sales, only: [:index, :show, :new, :edit, :destroy] do
     #Ajaxで動くアクションのルートを作成
   collection do
     get 'get_category_children', defaults: { format: 'json' }
     get 'get_category_grandchildren', defaults: { format: 'json' }
+    get 'get_image', defaults: { format: 'json' }
   end
 end
 

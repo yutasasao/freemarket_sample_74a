@@ -83,7 +83,8 @@
           -if user_signed_in? && current_user.id == @item.saler_id
             %ul
               %li
-                編集する
+                = link_to edit_item_path(@item) do
+                  編集する
               %li
                 = link_to "削除する", item_path(@item), method: :delete
         .item__content__top__comments

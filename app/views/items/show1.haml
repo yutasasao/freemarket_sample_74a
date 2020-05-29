@@ -8,7 +8,7 @@
       商品名
     .item-main-content-clearfix
       .item-photo
-        イメージ図
+        = image_tag "#{@item.images[0].image}",size:"300x420"
       %table.item-detail-table
         %tbody
           %tr
@@ -85,6 +85,9 @@
           %button.message-submit-btn-default-btn-gray
             %span
               コメントする
+            .message-content__edit
+              = link_to edit_item_path(@item) do
+                商品の編集
 
 = render "tops/footer-image"
 = render "tops/footer"

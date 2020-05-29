@@ -219,7 +219,7 @@ $(document).on("turbolinks:load", function() {
     itemId = $("#item-id").data("id");
     if (itemId != null) {
       $.ajax({
-        url: "/items/get_image",
+        url: "/sales/get_image",
         type: "GET",
         data: { item_id: itemId },
         dataType: "json"

@@ -1,5 +1,7 @@
 .sale
   = render "sales/top"
+
+  #item-id{data:{id:"#{@item.id}"}}
   .sale-main
     = form_for @item, html: {class: "sell-form zone", id: "item-dropzone"} do |f|
       = render 'layouts/error_messages', model: f.object
@@ -17,7 +19,7 @@
               .dropzone-area
                 = image.label :image, class: "dropzone-box", for: "upload-image" do
                   .input_area
-                    = image.file_field :image, multiple: true, name: 'images[image][]', id: "upload-image", class: "upload-image", 'date-image':0
+                    = image.file_field :image, multiple: true, name: 'images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
                   %p.input-area-text
                     = icon('fas','camera-retro')
                   %p ドラッグアンドドロップ
@@ -124,7 +126,7 @@
           %span ー
       .sale-form-exhibition
         .sale-form-exhibition__btn
-          = f.submit "出品する", class:'sale-form-exhibition__btn--red btn-red'
+          = f.submit "内容を変更する", class:'sale-form-exhibition__btn--red btn-red'
           = f.submit "下書きに保存", class:'sale-form-exhibition__btn--gray btn-gray'
           = link_to "もどる", root_path, class: "sale-form-exhibition__btn--link"
         .sale-form-exhibition__note
